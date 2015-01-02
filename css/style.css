@@ -101,7 +101,7 @@ a {
 
 .white-text {
   font-weight: bold;
-  color: #FFFFFF;
+  color: #999;
 }
 
 .gray {
@@ -135,7 +135,7 @@ a {
   padding-bottom: 2.5%
 }
 
-ul {
+li,ul {
   list-style-type: none;
 }
 
