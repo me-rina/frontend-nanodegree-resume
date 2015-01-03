@@ -7,15 +7,7 @@
 */
 
 
-/*
-var firstname= "james";
-var at = "I am " + firstname + " crabby";
-var newat =at.replace("crabby","hungry");
-//$("#main").append(newat);
-console.log(at);
-// console.log(newat);
-console.log("This is B4",HTMLheaderName);
-*/
+
 var bloglink="<a href=\"http://outsidethepond.com\" target=\"_blank\">OutsideThePond</a>"
 var skills = [HTMLskills.replace("%data%","SQL"),
  HTMLskills.replace("%data%","Support"),
@@ -36,19 +28,73 @@ var bio = {
 "skills":skills,
 "welcomeMsg":HTMLWelcomeMsg.replace("%data%","What do I do? ")
 };
-bio.contactGeneric=HTMLcontactGeneric.replace("%contact%","").replace("%data%",bio.contact)
+//bio.contactGeneric=HTMLcontactGeneric.replace("%contact%","").replace("%data%",bio.contact)
+
 
 var work= {
+"jobs": [
+{
 "position": HTMLworkTitle.replace("%data%","retired"),
 "employer": "me",
-"city": "Bloomfield,NJ",
-"yearsWorked": "2012 - Present"
+"location": HTMLworkLocation.replace("%data%","Bloomfield,NJ"),
+"dates": ["2012", "2015"],
+"desc": HTMLworkDescription.replace("%data%","dilettante, mostly")
+},
+{"position": HTMLworkTitle.replace("%data%","Manager, Customer Support"),
+"employer": HTMLworkEmployer.replace("%data%","http://klopotek.com\" target=\"_blank\">Klopotek"),
+"dates": HTMLworkDates.replace("%data%",["1980", "2012"]),
+"location": HTMLworkLocation.replace("%data%","Parisppany, NJ"),
+"desc": HTMLworkDescription.replace("%data%","call for info....too long to go into here!")
+}
+]
+}
+;
+
+var projects = {
+"web": [
+{"title": "OTP"}
+],
+"sewing": [
+{"title": "wombat"
+}
+],
+"misc": [
+{"title": "more to come...."
+}
+]
 };
-var edu = {
-"schoolName": "Seton Hall University",
-"yearsAttended": "1974 - 1978",
-"schoolCity": "South Orange, NJ"
-};
+
+var education = {
+   "schools" : [
+   {
+"name": "Seton Hall University",
+"dates": ["1974","1978"],
+"location": "South Orange, NJ",
+"degree": "BS",
+"majors": ["Mathematics"]
+   },
+    ],
+   "online" :[
+   {"title": "Programming Languages",
+   "school": "UW",
+   "prof": "Dan Grossman",
+   "provider": "Coursera"
+   },
+   {"title": "Irrational Behaviour",
+   "school": "DUP",
+   "prof": "Dan Ariely",
+   "provider": "Coursera"
+   },
+   {"title": "JavaScript Basics",
+   "school": "Udacity",
+   "prof": "Cameron&James",
+   "provider": "Udacity"
+   }
+   ]
+   }
+;
+
+
 
 //put it on the page //
 $("#header").prepend(bio.role).prepend(bio.name);
@@ -57,9 +103,9 @@ $("#topContacts").append(bio.contact.email).append(bio.contact.blog).append(bio.
 
 $("#header").append(bio.bioPic).append(bio.welcomeMsg).append(bio.skills);
 
-$("#workExperience").append(HTMLworkStart).append(work["position"]).append(work["city"]);
+$("#workExperience").append(HTMLworkStart).append(work.jobs[1]["position"]).append(work["city"]);
 
-$("#education").append(HTMLschoolStart).append(edu.schoolName);
+$("#education").append(HTMLschoolStart).append(education.schools[0].name);
 
 
 $("#footerContacts").append(bio.contact.email).append(bio.contact.blog).append(bio.contact.location);
