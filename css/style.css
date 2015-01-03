@@ -73,10 +73,10 @@ p {
 }
 
 a {
-  color: #1199C3;
+  color: #51a5ff;
   text-decoration: none;
   margin-top: 10px;
-  display: block;
+  display: inline;
 }
 
 .welcome-message {
