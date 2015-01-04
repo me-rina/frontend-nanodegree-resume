@@ -49,55 +49,84 @@ var work= {
 "desc": HTMLworkDescription.replace("%data%","call for info....too long to go into here!")
 }
 ]
-}
-;
+};
+
+work.display = function () {
+   for (var i in work.jobs) {
+    var thisjob = work.jobs[i];
+    $("#workExperience").append(HTMLworkStart);
+
+    $(".work-entry:last").append(thisjob.employer + thisjob.title).append(thisjob.location).append(thisjob.dates).append(thisjob.desc);
+    };
+};
 
 var projects = {
  "list": [
 {"title": HTMLprojectTitle.replace("%data%","OTP"),
-"desc": HTMLprojectDescription.replace("%data%","made a blog")
+"desc": HTMLprojectDescription.replace("%data%","made a blog<br></br><br></br>")
 },
 
 {"title": HTMLprojectTitle.replace("%data%","sewing"),
-"desc": HTMLprojectDescription.replace("%data%","wombat")
+"desc": HTMLprojectDescription.replace("%data%","wombat<br><br>"),
+"image": HTMLprojectImage.replace("%data%","images/wombat.gif")
 },
 
 {"title": HTMLprojectTitle.replace("%data%","misc"),
-"desc": HTMLprojectDescription.replace("%data%","more to come....")
+"desc": HTMLprojectDescription.replace("%data%","more to come....<br><br>")
 }
 ]
 };
+projects.display = function () {
+    for (var i in projects.list) {
+    var thisproj =projects.list[i];
+    $("#projects").append(HTMLprojectStart);
+    $(".project-entry:last").append(thisproj.title).append(thisproj.desc).append(thisproj.image);
+    };
+};
 
 var education = {
-   "schools" : [
-   {
-"name": "Seton Hall University",
-"dates": ["1974","1978"],
-"location": "South Orange, NJ",
-"degree": "BS",
-"majors": ["Mathematics"]
-   },
-    ],
-   "online" :[
-   {"title": "Programming Languages",
-   "school": "UW",
-   "prof": "Dan Grossman",
-   "provider": "Coursera"
-   },
-   {"title": "Irrational Behaviour",
-   "school": "DUP",
-   "prof": "Dan Ariely",
-   "provider": "Coursera"
-   },
-   {"title": "JavaScript Basics",
-   "school": "Udacity",
-   "prof": "Cameron&James",
-   "provider": "Udacity"
-   }
-   ]
-   }
-;
 
+   "online" : [
+   {"title": HTMLonlineTitle.replace("%data%","Programming Languages"),
+   "school": HTMLonlineSchool.replace("%data%","UW - Dan Grossman")
+   
+   },
+   {"title": HTMLonlineTitle.replace("%data%","Irrational Behaviour"),
+   "school": HTMLonlineSchool.replace("%data%","DUP - Dan Ariely")
+   },
+   {"title": HTMLonlineTitle.replace("%data%","JavaScript Basics"),
+   "school": HTMLonlineSchool.replace("%data%","Udacity - Cameron & James")
+   }
+   ],
+      "schools" : [
+   {
+"name": HTMLschoolName.replace("%data%","Seton Hall University"),
+"dates": HTMLschoolDates.replace("%data%","1978"),
+"location": "South Orange, NJ",
+"degree": HTMLschoolDegree.replace("%data%","BS"),
+"major": HTMLschoolMajor.replace ("%data%","Mathematics")
+   }
+    ]
+   };
+
+education.displayS = function() {
+    for (var school in education.schools) {
+	   var thisschool = education.schools[school];
+       $("#education").append(HTMLschoolStart);
+       $(".education-entry:last").append(thisschool.name).append(thisschool.degree).append(thisschool.dates).append(thisschool.major);	
+	   };
+	};
+	
+education.displayo = function() {   
+	 $("#education").append(HTMLonlineClasses);
+	 for (var aclass in education.online) {
+        var thisclass =education.online[aclass];
+		$("#education").append(HTMLschoolStart);
+        $(".education-entry:last").append(thisclass.title).append(thisclass.school);		
+	    };
+	};
+
+	
 /* I assume this is where you would "verify" your data
 but that's not the quiz, is it?
 the quiz is "just" a function that takes a "data" and returns a "cleaned" data
@@ -117,31 +146,17 @@ if ( bio["skills"].length !== 0) {
 $("#header").append(bio.skills);
 };
 
-//$("#workExperience").append(HTMLworkStart).append(work.jobs[0]["desc"]);
 
-function displaywork() {
-for (var i in work.jobs) {
-var thisjob = work.jobs[i];
-$("#workExperience").append(HTMLworkStart);
 
-$(".work-entry:last").append(thisjob.employer + thisjob.title).append(thisjob.location).append(thisjob.dates).append(thisjob.desc);
-};
-};
-displaywork();
 
-projects.display = function () {
-    for (var i in projects.list) {
-    var thisproj =projects.list[i];
-    $("#projects").append(HTMLprojectStart);
-
-    $(".project-entry:last").append(thisproj.title).append(thisproj.desc);
-    };
-};
+$("#main").append(work.display);
 
 $("#main").append(projects.display);
 
-$("#education").append(HTMLschoolStart);
-$(".education-entry").append(education.schools[0].name);
+$("#main").append(education.displayS);
+//$("#main").append(HTMLonlineClasses);
+$("#main").append(education.displayo);
+
 
 
 
