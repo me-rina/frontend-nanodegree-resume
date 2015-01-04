@@ -9,10 +9,13 @@
 
 
 var bloglink="<a href=\"http://outsidethepond.com\" target=\"_blank\">OutsideThePond</a>"
-var skills = [HTMLskills.replace("%data%","SQL"),
+var linkdlink="<a href=\"http://www.linkedin.com/in/AnneMarieRossi\" target=\"_blank\">LinkedIn</a>"
+var skills = [HTMLskills.replace("%data%","<i>Skills include:</i>:"),HTMLskills.replace("%data%","SQL"),
  HTMLskills.replace("%data%","Support"),
  HTMLskills.replace("%data%","Programming"),
  HTMLskills.replace("%data%","Other Stuff ")];
+ 
+var jobcontent="My experience is with a software development house that  provides ERP solutions to publishers.  As product offerings evolved,  I became an expert in the latest-and-greatest and was always instrumental in development, training,   QA, implementations and upgrades/migrations.  My experience, skill and acumen led to a successful and rewarding tenure as Customer Support Manager. <br><br> Proven excellence in:  Analysis, troubleshooting and debugging; Analysis of performance and capacity issues; Creating monitoring frameworks;  Analyzing, correlating and corroborating logs and trace files; Reproducing anomalous behavior to find the real problem; Finding/fixing unnatural data conditions; Evaluating differences between working and non-working states;  Encouraging others to tap into their own intelligence and acumen; Proposing or creating solutions to get the job done easier, faster, more accurately; Creating workarounds to bridge development lag; Turning data into information;  Data transformation, verification and validation.<br>"
 
 var name="Anne Marie Rossi";
 var formattedName=HTMLheaderName.replace("%data%",name);
@@ -24,15 +27,16 @@ var bio = {
 "contacts": 
     {"email": HTMLemail.replace("%data%","amr@outsidethepond.com"),
     "blog": HTMLblog.replace("%data%",bloglink),
-    "location": HTMLlocation.replace("%data%","07003")},
+    "location": HTMLlocation.replace("%data%","07003"),
+	"linkedin": HTMLcontactGeneric.replace("%contact%","LinkedIn").replace("%data%",linkdlink)},
 "bioPic":HTMLbioPic.replace("%data%","images/me.gif"),
 "skills":skills,
-"welcomeMsg":HTMLWelcomeMsg.replace("%data%","What do I do? "),
+"welcomeMsg":HTMLWelcomeMsg.replace("%data%","I love to solve hard problems and create solid solutions that remove the obstacles to the success and progress of others. If the solutions are considered clever, all the better! "),
 
 };
 bio.display = function () {
     $("#header").prepend(bio.role).prepend(bio.name);
-    $("#topContacts").append(bio.contacts.email).append(bio.contacts.blog).append(bio.contacts.location);
+    $("#topContacts").append(bio.contacts.email).append(bio.contacts.blog).append(bio.contacts.location).append(bio.contacts.linkedin);
 
 
     $("#header").append(bio.bioPic).append(bio.welcomeMsg); //.append(bio.skills);
@@ -58,7 +62,7 @@ var work= {
 "employer": HTMLworkEmployer.replace("%data%","Klopotek, NA"),
 "dates": HTMLworkDates.replace("%data%","1980 - 2012"),
 "location": HTMLworkLocation.replace("%data%","Parsippany,NJ"),
-"desc": HTMLworkDescription.replace("%data%","call for info....too long to go into here!")
+"desc": HTMLworkDescription.replace("%data%",jobcontent)
 }
 ]
 };
@@ -100,14 +104,41 @@ var education = {
 
    "online" : [
    {"title": HTMLonlineTitle.replace("%data%","Programming Languages"),
-   "school": HTMLonlineSchool.replace("%data%","UW - Dan Grossman")
+   "school": HTMLonlineSchool.replace("%data%","University of Washington ")
    
    },
-   {"title": HTMLonlineTitle.replace("%data%","Irrational Behaviour"),
-   "school": HTMLonlineSchool.replace("%data%","DUP - Dan Ariely")
+   {"title": HTMLonlineTitle.replace("%data%","A Beginner's Guide to Irrational Behaviour"),
+   "school": HTMLonlineSchool.replace("%data%","Duke University")
    },
    {"title": HTMLonlineTitle.replace("%data%","JavaScript Basics"),
-   "school": HTMLonlineSchool.replace("%data%","Udacity - Cameron & James")
+   "school": HTMLonlineSchool.replace("%data%","Udacity ")
+   },
+   {"title": HTMLonlineTitle.replace("%data%","Introduction to Mathematical Thinking"),
+   "school": HTMLonlineSchool.replace("%data%","Stanford University ")
+   },
+   {"title": HTMLonlineTitle.replace("%data%","An Introduction to Interactive Programming in Python"),
+   "school": HTMLonlineSchool.replace("%data%","Rice University")
+   },
+      {"title": HTMLonlineTitle.replace("%data%","Learn to Program: Crafting Quality Code"),
+   "school": HTMLonlineSchool.replace("%data%","University of Toronto")
+   },
+      {"title": HTMLonlineTitle.replace("%data%","Developing Innovative Ideas for New Companies"),
+   "school": HTMLonlineSchool.replace("%data%","University of Maryland, College Park")
+   },
+      {"title": HTMLonlineTitle.replace("%data%","Introduction to Art: Concepts and Techniques"),
+   "school": HTMLonlineSchool.replace("%data%","The Pennsylvania State University")
+   },
+      {"title": HTMLonlineTitle.replace("%data%","Learn to Program: The Fundamentals"),
+   "school": HTMLonlineSchool.replace("%data%","University of Toronto")
+   },
+      {"title": HTMLonlineTitle.replace("%data%","Creativity, Innovation, and Change"),
+   "school": HTMLonlineSchool.replace("%data%","The Pennsylvania State University")
+   },
+      {"title": HTMLonlineTitle.replace("%data%","How Green Is That Product? An Introduction to LCEA"),
+   "school": HTMLonlineSchool.replace("%data%","Northwestern University")
+   },
+      {"title": HTMLonlineTitle.replace("%data%","On Strategy: What Managers Can Learn from Philosophy (Part 1)"),
+   "school": HTMLonlineSchool.replace("%data%","\u00c9cole Centrale Paris")
    }
    ],
       "schools" : [

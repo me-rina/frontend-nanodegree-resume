@@ -140,7 +140,6 @@ function initializeMap() {
     }
 		
 	for (var i = 0; i < otherlist.length; i++) {
-	console.log("DEFAULT METHOD",i,otherlist.length);
 	locations.push(otherlist[i].textContent);
 	}
 	
