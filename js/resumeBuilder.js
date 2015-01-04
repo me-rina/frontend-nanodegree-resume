@@ -30,6 +30,18 @@ var bio = {
 "welcomeMsg":HTMLWelcomeMsg.replace("%data%","What do I do? "),
 
 };
+bio.display = function () {
+    $("#header").prepend(bio.role).prepend(bio.name);
+    $("#topContacts").append(bio.contact.email).append(bio.contact.blog).append(bio.contact.location);
+
+
+    $("#header").append(bio.bioPic).append(bio.welcomeMsg); //.append(bio.skills);
+
+    if ( bio["skills"].length !== 0) {
+      //$("#header").append(HTMLskillsStart);
+      $("#header").append(bio.skills);
+      };
+	};
 //bio.contactGeneric=HTMLcontactGeneric.replace("%contact%","").replace("%data%",bio.contact)
 
 
@@ -135,6 +147,7 @@ doing more than the instructions require. DOH!
 */
 
 //put it on the page //
+/*
 $("#header").prepend(bio.role).prepend(bio.name);
 $("#topContacts").append(bio.contact.email).append(bio.contact.blog).append(bio.contact.location);
 
@@ -145,16 +158,13 @@ if ( bio["skills"].length !== 0) {
 //$("#header").append(HTMLskillsStart);
 $("#header").append(bio.skills);
 };
+*/
 
 
-
-
+$("#main").append(bio.display);
 $("#main").append(work.display);
-
 $("#main").append(projects.display);
-
 $("#main").append(education.displayS);
-//$("#main").append(HTMLonlineClasses);
 $("#main").append(education.displayo);
 
 
