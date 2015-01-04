@@ -7,7 +7,7 @@
 */
 
 
-
+// simply for typing ease //
 var bloglink="<a href=\"http://outsidethepond.com\" target=\"_blank\">OutsideThePond</a>"
 var linkdlink="<a href=\"http://www.linkedin.com/in/AnneMarieRossi\" target=\"_blank\">LinkedIn</a>"
 var skills = [HTMLskills.replace("%data%","<i>Skills include:</i>"),HTMLskills.replace("%data%","SQL"),
@@ -17,13 +17,12 @@ var skills = [HTMLskills.replace("%data%","<i>Skills include:</i>"),HTMLskills.r
  
 var jobcontent="My experience is with a software development house that  provides ERP solutions to publishers.  As product offerings evolved,  I became an expert in the latest-and-greatest and was always instrumental in development, training,   QA, implementations and upgrades/migrations.  My experience, skill and acumen led to a successful and rewarding tenure as Customer Support Manager. <br><br> Proven excellence in:  Analysis, troubleshooting and debugging; Analysis of performance and capacity issues; Creating monitoring frameworks;  Analyzing, correlating and corroborating logs and trace files; Reproducing anomalous behavior to find the real problem; Finding/fixing unnatural data conditions; Evaluating differences between working and non-working states;  Encouraging others to tap into their own intelligence and acumen; Proposing or creating solutions to get the job done easier, faster, more accurately; Creating workarounds to bridge development lag; Turning data into information;  Data transformation, verification and validation.<br>"
 
-var name="Anne Marie Rossi";
-var formattedName=HTMLheaderName.replace("%data%",name);
-var formattedRole=HTMLheaderRole.replace("%data%","Factotum");
+var name="Anne Marie Rossi"; // this is required for that internationalisation button //
+
 var bio = {
 //key: value pairs
-"name": formattedName,
-"role": formattedRole,
+"name": HTMLheaderName.replace("%data%",name),
+"role": HTMLheaderRole.replace("%data%","Factotum"),
 "contacts": 
     {"email": HTMLemail.replace("%data%","amr@outsidethepond.com"),
     "blog": HTMLblog.replace("%data%",bloglink),
@@ -34,9 +33,17 @@ var bio = {
 "welcomeMsg":HTMLWelcomeMsg.replace("%data%","I love to solve hard problems and create solid solutions that remove the obstacles to the success and progress of others. If the solutions are considered clever, all the better! "),
 
 };
+bio.dispContacts = function (htmlTagId) {
+    var htmlTagId = htmlTagId;
+    for (var i in bio.contacts) {
+    $(htmlTagId).append(bio.contacts[i])
+	}
+	}
+	
 bio.display = function () {
     $("#header").prepend(bio.role).prepend(bio.name);
-    $("#topContacts").append(bio.contacts.email).append(bio.contacts.blog).append(bio.contacts.location).append(bio.contacts.linkedin);
+    bio.dispContacts("#topContacts");
+	bio.dispContacts("#footerContacts");
 
 
     $("#header").append(bio.bioPic); //.append(bio.welcomeMsg); //.append(bio.skills);
@@ -47,7 +54,7 @@ bio.display = function () {
       };
 	$("#header").append(bio.welcomeMsg);  
 	};
-//bio.contactGeneric=HTMLcontactGeneric.replace("%contact%","").replace("%data%",bio.contact)
+
 
 
 var work= {
@@ -55,14 +62,14 @@ var work= {
 {
 "title": HTMLworkTitle.replace("%data%","retired"),
 "employer": HTMLworkEmployer.replace("%data%","Currently"),
-"location": HTMLworkLocation.replace("%data%","Bloomfield,NJ"),
+"location": HTMLworkLocation.replace("%data%","Bloomfield, NJ"),
 "dates": HTMLworkDates.replace("%data%","2012 -Present"),
 "desc": HTMLworkDescription.replace("%data%","dilettante, mostly<br></br>")
 },
 {"title": HTMLworkTitle.replace("%data%","Manager, Customer Support"),
 "employer": HTMLworkEmployer.replace("%data%","Klopotek, NA"),
 "dates": HTMLworkDates.replace("%data%","1980 - 2012"),
-"location": HTMLworkLocation.replace("%data%","Parsippany,NJ"),
+"location": HTMLworkLocation.replace("%data%","Parsippany, NJ"),
 "desc": HTMLworkDescription.replace("%data%",jobcontent)
 }
 ]
@@ -167,8 +174,8 @@ var education = {
    {
 "name": HTMLschoolName.replace("%data%","Seton Hall University"),
 "dates": HTMLschoolDates.replace("%data%","1978"),
-"location": "South Orange, NJ",
-"degree": HTMLschoolDegree.replace("%data%","BS"),
+"location": "South Orange,NJ",
+"degree": HTMLschoolDegree.replace("%data%","BS, Mathematics"),
 "major": HTMLschoolMajor.replace ("%data%","Mathematics")
    }
     ]
@@ -178,7 +185,7 @@ education.displayS = function() {
     for (var school in education.schools) {
 	   var thisschool = education.schools[school];
        $("#education").append(HTMLschoolStart);
-       $(".education-entry:last").append(thisschool.name).append(thisschool.degree).append(thisschool.dates).append(thisschool.major);	
+       $(".education-entry:last").append(thisschool.name).append(thisschool.degree).append(thisschool.dates);	
 	   };
 	};
 	
@@ -192,27 +199,8 @@ education.displayo = function() {
 	};
 
 	
-/* I assume this is where you would "verify" your data
-but that's not the quiz, is it?
-the quiz is "just" a function that takes a "data" and returns a "cleaned" data
-once again, not reading the instructions, or rather
-doing more than the instructions require. DOH!
-*/
 
 //put it on the page //
-/*
-$("#header").prepend(bio.role).prepend(bio.name);
-$("#topContacts").append(bio.contact.email).append(bio.contact.blog).append(bio.contact.location);
-
-
-$("#header").append(bio.bioPic).append(bio.welcomeMsg); //.append(bio.skills);
-
-if ( bio["skills"].length !== 0) {
-//$("#header").append(HTMLskillsStart);
-$("#header").append(bio.skills);
-};
-*/
-
 
 $("#main").append(bio.display);
 $("#main").append(work.display);
@@ -226,10 +214,10 @@ $("#mapDiv").append(googleMap); /*!!!! if you turn this back on, do helper.js to
 
 
 
-$("#footerContacts").append(bio.contacts.email).append(bio.contacts.blog).append(bio.contacts.location);
+
 
 //$("#main").append(internationalizeButton);
-
+// this function was for a class exercise
 function inName(oldName) {
     var finalName = oldName;
     // Your code goes here!
