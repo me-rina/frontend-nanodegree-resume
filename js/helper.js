@@ -123,7 +123,7 @@ function initializeMap() {
 
     // initializes an empty array
     var locations = [];
-
+    var otherlist = document.getElementsByClassName("location-text");
     // adds the single location property from bio to the locations array
     locations.push(bio.contacts.location);
 
@@ -138,8 +138,14 @@ function initializeMap() {
     for (var job in work.jobs) {
       locations.push(work.jobs[job].location);
     }
-
+		
+	for (var i = 0; i < otherlist.length; i++) {
+	console.log("DEFAULT METHOD",i,otherlist.length);
+	locations.push(otherlist[i].textContent);
+	}
+	
     return locations;
+		
   }
 
   /*
@@ -234,11 +240,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});

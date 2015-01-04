@@ -21,7 +21,7 @@ var bio = {
 //key: value pairs
 "name": formattedName,
 "role": formattedRole,
-"contact": 
+"contacts": 
     {"email": HTMLemail.replace("%data%","amr@outsidethepond.com"),
     "blog": HTMLblog.replace("%data%",bloglink),
     "location": HTMLlocation.replace("%data%","07003")},
@@ -32,7 +32,7 @@ var bio = {
 };
 bio.display = function () {
     $("#header").prepend(bio.role).prepend(bio.name);
-    $("#topContacts").append(bio.contact.email).append(bio.contact.blog).append(bio.contact.location);
+    $("#topContacts").append(bio.contacts.email).append(bio.contacts.blog).append(bio.contacts.location);
 
 
     $("#header").append(bio.bioPic).append(bio.welcomeMsg); //.append(bio.skills);
@@ -57,7 +57,7 @@ var work= {
 {"title": HTMLworkTitle.replace("%data%","Manager, Customer Support"),
 "employer": HTMLworkEmployer.replace("%data%","Klopotek, NA"),
 "dates": HTMLworkDates.replace("%data%","1980 - 2012"),
-"location": HTMLworkLocation.replace("%data%","Parisppany, NJ"),
+"location": HTMLworkLocation.replace("%data%","Parsippany,NJ"),
 "desc": HTMLworkDescription.replace("%data%","call for info....too long to go into here!")
 }
 ]
@@ -167,10 +167,12 @@ $("#main").append(projects.display);
 $("#main").append(education.displayS);
 $("#main").append(education.displayo);
 
+// map crap
+$("#mapDiv").append(googleMap);
 
 
 
-$("#footerContacts").append(bio.contact.email).append(bio.contact.blog).append(bio.contact.location);
+$("#footerContacts").append(bio.contacts.email).append(bio.contacts.blog).append(bio.contacts.location);
 
 //$("#main").append(internationalizeButton);
 
