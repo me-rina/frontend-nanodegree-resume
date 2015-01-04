@@ -10,7 +10,7 @@
 
 var bloglink="<a href=\"http://outsidethepond.com\" target=\"_blank\">OutsideThePond</a>"
 var linkdlink="<a href=\"http://www.linkedin.com/in/AnneMarieRossi\" target=\"_blank\">LinkedIn</a>"
-var skills = [HTMLskills.replace("%data%","<i>Skills include:</i>:"),HTMLskills.replace("%data%","SQL"),
+var skills = [HTMLskills.replace("%data%","<i>Skills include:</i>"),HTMLskills.replace("%data%","SQL"),
  HTMLskills.replace("%data%","Support"),
  HTMLskills.replace("%data%","Programming"),
  HTMLskills.replace("%data%","Other Stuff ")];
@@ -39,12 +39,13 @@ bio.display = function () {
     $("#topContacts").append(bio.contacts.email).append(bio.contacts.blog).append(bio.contacts.location).append(bio.contacts.linkedin);
 
 
-    $("#header").append(bio.bioPic).append(bio.welcomeMsg); //.append(bio.skills);
+    $("#header").append(bio.bioPic); //.append(bio.welcomeMsg); //.append(bio.skills);
 
     if ( bio["skills"].length !== 0) {
       //$("#header").append(HTMLskillsStart);
       $("#header").append(bio.skills);
       };
+	$("#header").append(bio.welcomeMsg);  
 	};
 //bio.contactGeneric=HTMLcontactGeneric.replace("%contact%","").replace("%data%",bio.contact)
 
@@ -78,12 +79,21 @@ work.display = function () {
 
 var projects = {
  "list": [
-{"title": HTMLprojectTitle.replace("%data%","OTP"),
-"desc": HTMLprojectDescription.replace("%data%","made a blog<br></br><br></br>")
-},
+{"title": HTMLprojectTitle.replace("%data%","Websites"),
+//"desc": HTMLprojectDescription.replace("%data%","made a blog<br></br><br></br>"),
+"urls": [
+      HTMLprojectURL.replace("%data%","outsidethepond.com").replace("%named%","Outside The Pond"),
+	  HTMLprojectURL.replace("%data%","mister-pc.com").replace("%named%","Mr PC LLC"),
+	  HTMLprojectURL.replace("%data%","rafelphoto.com").replace("%named%","Rafel Photo")
+	  ],
+"desc": "<br>"
+  
+	  },
 
-{"title": HTMLprojectTitle.replace("%data%","sewing"),
-"desc": HTMLprojectDescription.replace("%data%","wombat<br><br>"),
+
+
+{"title": HTMLprojectTitle.replace("%data%","Artsy/Craftsy"),
+"desc": HTMLprojectDescription.replace("%data%","This is my fave....<br><br>"),
 "image": HTMLprojectImage.replace("%data%","images/wombat.gif")
 },
 
@@ -92,11 +102,23 @@ var projects = {
 }
 ]
 };
+projects.displayURLS = function (us) {
+    var _us = us //expect this to be a projects.list[i]
+    if (us) {
+	for (var i in us) {
+	$(".project-entry:last").append(us[i])
+	}
+	$(".project-entry:last").append("<br>")
+	}
+	};
+	
 projects.display = function () {
     for (var i in projects.list) {
     var thisproj =projects.list[i];
     $("#projects").append(HTMLprojectStart);
-    $(".project-entry:last").append(thisproj.title).append(thisproj.desc).append(thisproj.image);
+    $(".project-entry:last").append(thisproj.title).append(thisproj.desc).append(thisproj.image) //.append(projects.displayURLS(thisproj.urls))
+	projects.displayURLS(thisproj.urls);
+	
     };
 };
 
@@ -199,7 +221,8 @@ $("#main").append(education.displayS);
 $("#main").append(education.displayo);
 
 // map crap
-$("#mapDiv").append(googleMap);
+
+$("#mapDiv").append(googleMap); /*!!!! if you turn this back on, do helper.js too. I'm really mad I can't if it */
 
 
 

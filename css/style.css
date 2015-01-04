@@ -13,6 +13,12 @@
   padding-right: 5%;
 }
 
+.project-url{
+   padding-loft 40px;
+   font: 12px;
+
+}
+   
 h1 {
   font-size: 40px;
   color: #AD655F;
@@ -81,7 +87,7 @@ a {
 }
 
 .welcome-message {
-  font-size: 14px;
+  font-size: 18px;
   color: #000000;
   line-height: 28px;
 }

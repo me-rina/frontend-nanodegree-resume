@@ -37,10 +37,11 @@ var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<a href="#">%data%</a>';
+var HTMLprojectTitle = '<a href="#">%data%</a><br>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p><br>%data%</p>';
 var HTMLprojectImage = '<img src="%data%">';
+var HTMLprojectURL = '<div class="project-url"><a href=\"http://%data%\" target=\"_blank\">%named%</a><div>';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="#">%data%';
@@ -102,6 +103,7 @@ var map;    // declares a global map variable
 /*
 Start here! initializeMap() is called when page is loaded.
 */
+
 function initializeMap() {
 
   var locations;
@@ -112,6 +114,7 @@ function initializeMap() {
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
+
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
 
@@ -238,6 +241,7 @@ function initializeMap() {
 Uncomment the code below when you're ready to implement a Google Map!
 */
 
+
 // Calls the initializeMap() function when the page loads
 window.addEventListener('load', initializeMap);
 
@@ -247,3 +251,4 @@ window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
   map.fitBounds(mapBounds);
 });
+
